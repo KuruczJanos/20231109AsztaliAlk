@@ -1,6 +1,7 @@
 package stableant;
 
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 public class MainFrame extends javax.swing.JFrame {
@@ -29,6 +30,21 @@ public class MainFrame extends javax.swing.JFrame {
             //Importálni kell ALT+ENTER vagy CTRL + Space /
             DefaultTableModel model = new DefaultTableModel();
             table.setModel(model);
+            Object[] fields = {
+                "Azonosító",
+                "Név",
+                "Város",
+                "Fizetés"
+        };
+            model.setColumnIdentifiers(fields);
+            for ( Employee emp : empList ) { 
+                Vector<String> row = new Vector<>();
+                row.add(emp.id.toString());
+                row.add(emp.name);
+                row.add(emp.city);
+                row.add(emp.salary.toString());
+                model.addRow(row);
+            }
     }
 
     @SuppressWarnings("unchecked")
